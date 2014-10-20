@@ -3,9 +3,8 @@
     "$": false,
     "describe": false,
     "it": false,
-    "window": false
+    "beforeEach": false
   },
-  "browser": true,
   "devel": true,
   "node": true
 }
