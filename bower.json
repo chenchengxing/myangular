@@ -1,0 +1,6 @@
+{
+  "name": "ccx",
+  "devDependencies": {
+    "chai": "~1.9.2"
+  }
+}

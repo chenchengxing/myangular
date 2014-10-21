@@ -1,7 +1,23 @@
 var gulp = require('gulp');
-var mocha = require('gulp-mocha');
+// var mocha = require('gulp-mocha');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
+
+var karma = require('gulp-karma');
+
+var testFiles = [
+'bower_components/chai/chai.js',
+  'src/*.js',
+  'test/*.js'
+];
+
+gulp.task('d', function() {
+  gulp.src(testFiles)
+    .pipe(karma({
+      configFile: 'karma.conf.js',
+      action: 'watch'
+    }));
+});
 
 gulp.task('default', function () {
   gulp.watch(['src/**/*.js', 'test/**/*.js', '*.js'], ['hint', 'mocha']);

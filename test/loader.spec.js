@@ -1,8 +1,6 @@
 
 'use strict';
-var expect = require('chai').expect;
-var setupModuleLoader = require('../src/loader');
-var window = {};
+var expect = chai.expect;
 
 beforeEach(function () {
   delete window.angular;
@@ -45,9 +43,33 @@ describe('setupModuleLoader', function() {
     it('attaches the requires array to the registered module', function() {
       var requires = ['myOtherModule'];
       var myModule = window.angular.module('myModule', requires);
-      console.log(myModule.requires);
       expect(myModule.requires).to.equal(requires);
       // expect(myModule.requires == requires).to.be.true;
+    });
+
+    it('get a module if defined', function () {
+      var myModule = window.angular.module('app', []);
+      var get = window.angular.module('app');
+      expect(get).to.exist;
+      expect(get).to.equal(myModule);
+      // var get2 = window.angular.module('appa');
+      // console.log(get2);
+      // expect(get2).to.not.exist;
+    });
+
+    it('throws when trying to get a nonexistent module', function() {
+      expect(function() {
+        window.angular.module('myModule');
+      }).to.throw();
+    });
+    // it('d', function () {
+    //   var myModule = window.angular.module('hasOwnProperty', []);
+    //   window.angular.module('fdskjf');
+    // })
+    it('does not allow a module to be called hasOwnProperty', function() {
+      expect(function() {
+        window.angular.module('hasOwnProperty', []);
+      }).to.throw();
     });
   });
 });
