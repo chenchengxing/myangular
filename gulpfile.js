@@ -12,7 +12,7 @@ var testFiles = [
 ];
 
 gulp.task('d', function() {
-  gulp.src(testFiles)
+  gulp.src(['undefine.js'])
     .pipe(karma({
       configFile: 'karma.conf.js',
       action: 'watch'
