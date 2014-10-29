@@ -11,7 +11,7 @@ var testFiles = [
   'test/*.js'
 ];
 
-gulp.task('d', function() {
+gulp.task('default', function() {
   gulp.src(['undefine.js'])
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -19,23 +19,23 @@ gulp.task('d', function() {
     }));
 });
 
-gulp.task('default', function () {
-  gulp.watch(['src/**/*.js', 'test/**/*.js', '*.js'], ['hint', 'mocha']);
-});
+// gulp.task('default', function () {
+//   gulp.watch(['src/**/*.js', 'test/**/*.js', '*.js'], ['hint', 'mocha']);
+// });
 
-gulp.task('mocha', function () {
-  return gulp.src('test/*.js')
-    .pipe(mocha({
-      reporter: 'nyan'
-    }));
-});
+// gulp.task('mocha', function () {
+//   return gulp.src('test/*.js')
+//     .pipe(mocha({
+//       reporter: 'nyan'
+//     }));
+// });
 
-/**
- * hint for all src javascript
- */
-gulp.task('hint', function () {
-  return gulp.src(['src/**/*.js', 'test/**/*.js', '*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
-});
+// /**
+//  * hint for all src javascript
+//  */
+// gulp.task('hint', function () {
+//   return gulp.src(['src/**/*.js', 'test/**/*.js', '*.js'])
+//     .pipe(jshint())
+//     .pipe(jshint.reporter(stylish));
+// });
 
